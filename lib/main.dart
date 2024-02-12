@@ -63,7 +63,7 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen> {
     _resumePosition = Duration();
     _audioPlayer.onPlayerStateChanged.listen((state) {
       setState(() {
-        _audioPlayerState = state!;
+        _audioPlayerState = state;
       });
     });
 
@@ -172,7 +172,7 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen> {
 
       _audioPlayer.onDurationChanged.listen((duration) {
         setState(() {
-          _duration = duration ?? Duration();
+          _duration = Duration();
         });
       });
 
@@ -215,7 +215,6 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen> {
 
   void _showButtons(String presetFileName, String audioFilePath, String presetFilePath) async {
     List<int> presets = await _readPresets(presetFileName);
-    final file = await _localFile(presetFileName);
 
     showDialog(
       context: context,
@@ -243,7 +242,6 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen> {
 
   List<Widget> _loadPresets(List<int> presets, String audioFilePath, String presetFileName) {
     List<Widget> buttons = [];
-    final file = _localFile(presetFileName);
 
     for (int i = 0; i < presets.length; i++) {
       buttons.add(
