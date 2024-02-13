@@ -7,13 +7,15 @@ import 'package:path_provider/path_provider.dart';
 import 'package:file_picker/file_picker.dart';
 
 void main() {
-  runApp(AudioPlayerApp());
+  runApp(const AudioPlayerApp());
 }
 
 class AudioPlayerApp extends StatelessWidget {
+  const AudioPlayerApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'Figure Skating Audio Player',
       home: AudioPlayerScreen(),
     );
@@ -21,6 +23,8 @@ class AudioPlayerApp extends StatelessWidget {
 }
 
 class AudioPlayerScreen extends StatefulWidget {
+  const AudioPlayerScreen({super.key});
+
   @override
   _AudioPlayerScreenState createState() => _AudioPlayerScreenState();
 }
@@ -28,10 +32,10 @@ class AudioPlayerScreen extends StatefulWidget {
 class _AudioPlayerScreenState extends State<AudioPlayerScreen> {
   late AudioPlayer _audioPlayer;
   late PlayerState _audioPlayerState;
-  Duration _duration = Duration();
-  Duration _position = Duration();
-  Duration _resumePosition = Duration();
-  Duration _lastPosition = Duration();
+  Duration _duration = const Duration();
+  Duration _position = const Duration();
+  Duration _resumePosition = const Duration();
+  Duration _lastPosition = const Duration();
   String _currentFilePath = "";
   int _presetTime = 0;
 
@@ -60,10 +64,10 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen> {
     super.initState();
     _audioPlayer = AudioPlayer();
     _audioPlayerState = PlayerState.stopped;
-    _resumePosition = Duration();
+    _resumePosition = const Duration();
     _audioPlayer.onPlayerStateChanged.listen((state) {
       setState(() {
-        _audioPlayerState = state!;
+        _audioPlayerState = state;
       });
     });
 
@@ -84,7 +88,7 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Figure Skating Audio Player'),
+        title: const Text('Figure Skating Audio Player'),
       ),
       body: Center(
         child: Column(
@@ -92,29 +96,29 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen> {
           children: [
             ElevatedButton(
               onPressed: () => _loadShortProgramMusic(),
-              child: Text('Load Short Program'),
+              child: const Text('Load Short Program'),
             ),
-            SizedBox(width: 10),
+            const SizedBox(width: 10),
             Checkbox(
               value: _isShortProgramLoaded,
               onChanged: null,
             ),
             ElevatedButton(
               onPressed: () => _loadFreeProgramMusic(),
-              child: Text('Load Free Program'),
+              child: const Text('Load Free Program'),
             ),
-            SizedBox(width: 10),
+            const SizedBox(width: 10),
             Checkbox(
               value: _isFreeProgramLoaded,
               onChanged: null,
             ),
             ElevatedButton(
               onPressed: () => _onShortButtonClick(),
-              child: Text('Short program'),
+              child: const Text('Short program'),
             ),
             ElevatedButton(
               onPressed: () => _onLongButtonClick(),
-              child: Text('Free program'),
+              child: const Text('Free program'),
             ),
             Text(_currentFilePath),
             Slider(
@@ -138,12 +142,12 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen> {
                 ],
               ),
             ),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
             Column(
               children: [
                 ElevatedButton(
                   onPressed: () => _onStopButtonClick(),
-                  child: Text('Pause'),
+                  child: const Text('Pause'),
                 ),
               ],
             ),
@@ -151,7 +155,7 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen> {
               children: [
                 ElevatedButton(
                   onPressed: () => _onResumeButtonClick(),
-                  child: Text('Resume'),
+                  child: const Text('Resume'),
                 ),
               ],
             ),
@@ -172,7 +176,7 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen> {
 
       _audioPlayer.onDurationChanged.listen((duration) {
         setState(() {
-          _duration = duration ?? Duration();
+          _duration = duration ?? const Duration();
         });
       });
 
@@ -182,13 +186,13 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen> {
         _position = Duration(seconds: startTime);
       }
 
-      Future.delayed(Duration(milliseconds: 100), () {
+      Future.delayed(const Duration(milliseconds: 100), () {
         setState(() {
           _audioPlayerState = PlayerState.playing;
           _currentFilePath = path;
           _presetTime = startTime;
-          _resumePosition = Duration();
-          _lastPosition = Duration();
+          _resumePosition = const Duration();
+          _lastPosition = const Duration();
         });
       });
     } catch (e) {
@@ -201,7 +205,7 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen> {
     setState(() {
       _audioPlayerState = PlayerState.stopped;
       _lastPosition = _position;
-      _position = Duration();
+      _position = const Duration();
     });
   }
 
@@ -221,18 +225,18 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Start time'),
+          title: const Text('Start time'),
           content: Column(
             children: [
               ElevatedButton(
                 onPressed: () => _onFullButtonClick(audioFilePath),
-                child: Text('Full duration'),
+                child: const Text('Full duration'),
               ),
               ..._loadPresets(presets, audioFilePath, presetFileName),
-              SizedBox(height: 15),
+              const SizedBox(height: 15),
               ElevatedButton(
                 onPressed: () => _onEditAllButtonClick(presets, audioFilePath, presetFilePath),
-                child: Text('Edit Presets'),
+                child: const Text('Edit Presets'),
               ),
             ],
           ),
@@ -257,7 +261,7 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen> {
     }
     ElevatedButton(
       onPressed: () => _onEditAllButtonClick(presets, audioFilePath, presetFileName),
-      child: Text('Edit Presets'),
+      child: const Text('Edit Presets'),
     );
 
     return buttons;
@@ -380,14 +384,14 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen> {
 class EditPresetScreen extends StatefulWidget {
   final String filePath;
 
-  EditPresetScreen({required this.filePath});
+  const EditPresetScreen({super.key, required this.filePath});
 
   @override
   _EditPresetScreenState createState() => _EditPresetScreenState();
 }
 
 class _EditPresetScreenState extends State<EditPresetScreen> {
-  TextEditingController _controller = TextEditingController();
+  final TextEditingController _controller = TextEditingController();
 
   Future<File> _localFile() async {
     final path = await _localPath;
@@ -431,7 +435,7 @@ class _EditPresetScreenState extends State<EditPresetScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Edit Preset'),
+        title: const Text('Edit Preset'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -446,7 +450,7 @@ class _EditPresetScreenState extends State<EditPresetScreen> {
             ),
             ElevatedButton(
               onPressed: () => _saveFile(),
-              child: Text('Save'),
+              child: const Text('Save'),
             ),
           ],
         ),
