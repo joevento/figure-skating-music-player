@@ -1,6 +1,6 @@
-# Figure Skating Practice Music Player
+# Figure Skating Music Player
 
-Welcome to the Figure Skating Practice Music Player application! This application is designed to help figure skaters manage and play their practice music effectively.
+Welcome to the Figure Skating Music Player application! This application is designed to help figure skaters manage and play their practice music effectively.
 
 ## Features
 
@@ -13,7 +13,7 @@ Welcome to the Figure Skating Practice Music Player application! This applicatio
 
 ## Getting Started
 
-To start using the Figure Skating Practice Music Player:
+To start using the Figure Skating Music Player:
 
 1. **Load Music**: Tap the "Load Short Program" or "Load Free Program" buttons to import your music tracks.
 2. **Play Music**: Tap the "Short program" or "Free program" buttons to start playing your music.
@@ -30,7 +30,7 @@ For any questions, feedback, or issues, please [open an issue](https://github.co
 
 ## Contributing
 
-We welcome contributions to improve the Figure Skating Practice Music Player. If you'd like to contribute, feel free to fork the repository and submit a pull request with your changes.
+We welcome contributions to improve the Figure Skating Music Player. If you'd like to contribute, feel free to fork the repository and submit a pull request with your changes.
 
 ## License
 
