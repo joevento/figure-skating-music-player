@@ -21,8 +21,8 @@ To start using the Figure Skating Music Player:
 4. **Practice**: Focus on your routine while the music plays, using playback controls as needed.
 
 ## Screenshots
-![Alt text](https://imgur.com/a/COpKAyq "Main menu")
-![Alt text](https://imgur.com/a/vd8jNM8 "Start menu")
+![Alt text](https://i.imgur.com/SDiOqkC.png "Main menu")
+![Alt text](https://i.imgur.com/JnvOoa6.png "Start menu")
 
 ## Support
 
