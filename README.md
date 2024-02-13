@@ -21,12 +21,12 @@ To start using the Figure Skating Music Player:
 4. **Practice**: Focus on your routine while the music plays, using playback controls as needed.
 
 ## Screenshots
-
-[Add screenshots here to visually demonstrate the application.]
+![Alt text](https://imgur.com/a/COpKAyq "Main menu")
+![Alt text](https://imgur.com/a/vd8jNM8 "Start menu")
 
 ## Support
 
-For any questions, feedback, or issues, please [open an issue](https://github.com/your-username/figure-skating-music-player/issues) on GitHub. We're here to assist you!
+For any questions, feedback, or issues, please [open an issue](https://github.com/joevento/figure-skating-music-player/issues) on GitHub. We're here to assist you!
 
 ## Contributing
 
